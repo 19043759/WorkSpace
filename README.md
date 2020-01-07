@@ -1,5 +1,5 @@
 # csd212.20w.foglia-nathan
-# CSD212 Labs!
+# CSD212 Labs
 
  This repository contains lab work for the Sault College course CSD212
 
