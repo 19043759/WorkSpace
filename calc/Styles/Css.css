@@ -1,0 +1,21 @@
+.num {
+    display : block;
+    width : 100%
+}
+
+.clear {
+    display : block;
+    width : 100%
+}
+
+.point{
+    width : 100%
+}
+
+table td{
+    border: solid black 5px
+}
+
+button{
+    background: #aaaaaa
+}
