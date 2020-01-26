@@ -11,52 +11,39 @@
     <table border ="1" class="calculator">
         <tr>
             <td colspan="4">
-            <div class="display"> 5 </div>
+            <div>
+                <input type="text" id="number" class="number" value="0" readonly />
+            </div>
             </td>
         </tr>
         <tr>
-            <td colspan="3"><button class="clear">Clear</button></td>
+            <td colspan="3"><button id="clear" class ="clear" onclick = "clearCalc()">Clear</button></td>
             <td><button class="op" class="div" onclick="alert('&divide;')">&divide;</button></td>
         </tr>
         <tr>
-            <td><button class="num"> 7 </button></td>
-            <td><button class="num"> 8 </button></td>
-            <td><button class="num"> 9 </button></td>
+            <td><button id="num7" onclick="number(7)"> 7 </button></td>
+            <td><button id="num8" onclick="number(8)"> 8 </button></td>
+            <td><button id="num9" onclick="number(9)"> 9 </button></td>
             <td><button class="op" class="mul" onclick="alert('&times;')">&times;</button></td>
         </tr>
         <tr>
-            <td><button class="num"> 4 </button></td>
-            <td><button class="num"> 5 </button></td>
-            <td><button class="num"> 6 </button></td>
+            <td><button id="num4" onclick="number(4)"> 4 </button></td>
+            <td><button id="num5" onclick="number(5)"> 5 </button></td>
+            <td><button id="num6" onclick="number(6)"> 6 </button></td>
             <td><button class="op" class="sub" onclick="alert('&minus;')">&minus;</button></td>
         </tr>
         <tr>
-            <td><button class="num"> 1 </button></td>
-            <td><button class="num"> 2 </button></td>
-            <td><button class="num"> 3 </button></td>
+            <td><button id="num1" onclick="number(1)"> 1 </button></td>
+            <td><button id="num2" onclick="number(2)"> 2 </button></td>
+            <td><button id="num3" onclick="number(3)"> 3 </button></td>
             <td><button class="op" class="add" onclick="alert('&plus;')">&plus;</button></td>
         </tr>
         <tr>
-            <td colspan="2"><button class="num"> 0 </button></td>
+            <td colspan="2"><button id="num0" class="num" onclick="number(0)"> 0 </button></td>
             <td><button class="point" onclick="alert('.')">.</button></td>
             <td><button class="op" class="eq" onclick="alert('&equals;')">&equals;</button></td>
         </tr>
     </table>
-    <script>
-
-    function cleardisplay(display){
-        if (display != 0){
-            onclick = 0
-        }
-        var clearcalc = 0
-        
-
-    function number(display){
-        var displayTotal = document.getElementsByClassName("num").addEventListener("click", displayTotal += document.getElementsByClassName("display"), false)
-
-}
-cleardisplay()
-number()
-    </script>
+    <script type="text/javascript" src="js/calc.js"></script>
 </body>
 </html>
