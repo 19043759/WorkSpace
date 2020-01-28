@@ -1,11 +1,11 @@
 .num {
     display : block;
-    width : 100%
+    width : 100%;
 }
 
 .clear {
     display : block;
-    width : 100%
+    width : 100%;
 }
 
 .display{
@@ -13,13 +13,13 @@
 }
 
 .point{
-    width : 100%
+    width : 100%;
 }
 
 table td{
-    border: solid black 5px
+    border: solid black 5px;
 }
 
 button{
-    background: #aaaaaa
+    background: #aaaaaa;
 }
