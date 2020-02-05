@@ -4,17 +4,19 @@ function clearCalc(){
 
 function number(number){
     var curNum = document.getElementById("display").innerHTML;
-    if (curNum == 0) {
+    if (curNum === "0") {
         document.getElementById("display").innerHTML = number
     }
-    else{
+    else if (curNum === "0." || curNum !== "0"){
         document.getElementById("display").innerHTML = curNum + number
     }
-
 }
+
 function decimal() {
     var addDecimal = document.getElementById("display").innerHTML;
     var isDecimal = addDecimal.indexOf(".");
-    if (isDecimal != true) 
+    if (isDecimal == -1) {
+        
         document.getElementById("display").innerHTML = addDecimal + "."
+    }
 }

@@ -4,7 +4,7 @@
    <!--
       JavaScript 6th Edition
       Chapter 3
-      Hands-on Project 3-4
+      Hands-on Project 3-5
 
       Author: Nathan Foglia   
       Date:   Feb 4,2020
@@ -21,7 +21,7 @@
 <body>
    <header>
       <h1>
-         Hands-on Project 3-4
+         Hands-on Project 3-5
       </h1>
    </header>
 
@@ -55,7 +55,8 @@
 
       //function processing user input to list
       function processInput() {
-         if (i <= 5) {
+
+         /*if (i <= 5) {
             listItem = "item" + i;
             document.getElementById(listItem).innerHTML = document.getElementById("toolBox").value;
             document.getElementById("toolBox").value = ""; 
@@ -63,10 +64,27 @@
                document.getElementById("resultsExpl").innerHTML = "Thanks for your suggestions.";
             }
             i += 1;           
+         }*/
+
+         //switch statement processing user input.
+         switch (i) {
+            case 5:
+               listItem = "item" + i;
+               document.getElementById(listItem).innerHTML = document.getElementById("toolBox").value;
+               document.getElementById("toolBox").value = "";
+               document.getElementById("resultsExpl").innerHTML = "Thanks for your suggestions.";
+               break;
+            default: 
+               listItem = "item" + i;
+               document.getElementById(listItem).innerHTML = document.getElementById("toolBox").value;
+               document.getElementById("toolBox").value = "";
+               i += 1;
+               break;            
          }
+
       }
       
-      //processInput function when clicked on, submit button
+      // processInput function when clicked on, submit button
       var submitButton = document.getElementById("button");
       submitButton.addEventListener("click", processInput, false);
 
