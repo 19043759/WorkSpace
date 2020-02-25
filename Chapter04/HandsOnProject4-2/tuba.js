@@ -4,7 +4,7 @@
 
  *    Tuba Farm Equipment
  *    Variables and functions
- *    Author: Weston Moffat
+ *    Author: Nathan Foglia
  *    Date: 02/18/20  
 
  *    Filename: tuba.js
