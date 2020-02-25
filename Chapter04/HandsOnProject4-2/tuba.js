@@ -1,11 +1,11 @@
 /*    JavaScript 6th Edition
  *    Chapter 4
- *    Hand-on-Project 4-2
+ *    Chapter case
 
  *    Tuba Farm Equipment
  *    Variables and functions
- *    Author: Nathan Foglia   
- *    Date:  Feb. 23, 2020
+ *    Author: Weston Moffat
+ *    Date: 02/18/20  
 
  *    Filename: tuba.js
  */
@@ -35,41 +35,41 @@ function verifyAcres() {
    var validity = true;
    var messageText = "";
    try {
-      if (!(acresBox.value > 0)){
-         throw "please enter a number of acers grater than 0.";
+      if (!(acresBox.value > 0)) {
+         throw "Please enter a number of acres greater than 0.";
       }
    }
-   catch(message) {
-      validity = false; 
+   catch (message) {
+      validity = false;
       messageText = message;
-      acresBox.value = ""; // remove erroneouss entery from input box
+      acresBox.value = ""; // remove erroneous entry from input box
    }
    finally {
       acresComplete = validity;
       messageElement.innerHTML = messageText;
-      messageHeadElement.innerHTML = "";// remove any former recommendation heading
+      messageHeadElement.innerHTML = ""; // remove any former recommendation heading
       testFormCompleteness();
-   }      
+   }
 }
 
 /* verify at least one crops checkbox is checked */
 function verifyCrops() {
    try {
-      for (var i = 0; i < 7; i++) {
+      for (var i = 0 ; i < 7; i++) {
          if (cropsFieldset.getElementsByTagName("input")[i].checked) {
-              cropsComplete = true;
-              messageElement.innerHTML = ""; // clear previous message or recommendation
-              testFormCompleteness();
-               i = 8;
-      } 
-   }
+            cropsComplete = true;
+            messageElement.innerHTML = ""; // clear previous message or recomendation
+            testFormCompleteness();
+            i = 8;
+         }
+      }
       if (i === 7) {
          throw "Please select at least one crop.";
       }
    }
    catch (message) {
-      cropsComplete = false;
-      messageHeadElement.innerHTML = ""; //remove any former recommendation heading
+      cropsComplete = false; 
+      messageHeadElement.innerHTML = ""; // remove any former recomendation heading
       messageElement.innerHTML = message; // display error message
    }
 }
@@ -80,22 +80,22 @@ function verifyMonths() {
    var messageText = "";
    try {
       if (!(monthsBox.value >= 1 && monthsBox.value <= 12)) {
-         throw "please enter a number of months between 1 and 12.";
+         throw "Please enter a number of months between 1 and 12.";
       }
    }
-   catch(message) {
-      validity = false;
+   catch (message) {
+      validity = false; 
       messageText = message;
-      monthsBox.value = ""; // remove erroneous entry from input box     
+      monthsBox.value = ""; // remove erroneous entry from input box
    }
    finally {
-      monthsComplete = validity;
+      monthsComplete = validity; 
       messageElement.innerHTML = messageText;
-      messageHeadElement.innerHTML =""; //remove any former recomendation heading
+      messageHeadElement.innerHTML = ""; // remove any former recommendatin heading
       testFormCompleteness();
    }
+   
 }
-
 
 /* verify that a fuel option button is selected */
 function verifyFuel() {
@@ -136,7 +136,7 @@ function createRecommendation() {
    if (document.getElementById("E85").checked) { // add suffix to model name based on fuel choice
       messageHeadElement.innerHTML += "E";
    } else if (document.getElementById("biodiesel").checked) {
-      messageHeadElement.innerHTML = "B";
+      messageHeadElement.innerHTML += "B";
    } else {
       messageHeadElement.innerHTML += "D";  
    }
