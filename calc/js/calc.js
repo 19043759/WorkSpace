@@ -6,10 +6,16 @@ function clearCalc(){
     a = [];
 }
 
+function continueMath() {
+    math()
+    a = [ a[1] ];
+}
+
 function number(number){
     if (!clear){
-        clearCalc();
+        continueMath();
         clear = true;
+        
     } 
     var curNum = document.getElementById("display").innerHTML;
 
@@ -54,6 +60,7 @@ function math() {
 
     document.getElementById("display").innerHTML = total;
     //clear = false;
+    return total
 }
 
 function op (op) {
@@ -72,7 +79,7 @@ function op (op) {
             a[0] = document.getElementById("display").innerHTML;
             a[1] = op;
 
-            document.getElementById("display").innerHTML = 0;
+            //document.getElementById("display").innerHTML = 0;
         }
     } else {
         a[2] =  document.getElementById("display").innerHTML;
