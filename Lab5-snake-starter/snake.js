@@ -119,14 +119,20 @@
 
     function clearBoard() {
         // TODO: remove all elements from the gameboard element
+        let childEl = document.getElementById("gameboard");
+        childEl.removeChild();
     }
 
     function hideMenu() {
         // TODO: hide the menu
+        let x = document.getElementById("menu");
+        x.classList.remove("open")
     }
 
     function showMenu() {
         // TODO: show the menu
+        let x = document.getElementById("menu");
+        x.classList.add("open")
     }
 
     function hideGameover() {
@@ -223,10 +229,14 @@
 
     function init() {
         // TODO: initialize the app
+        boardEl = document.getElementById("gameboard");
+        gameoverEl =  document.getElementById("game-over");
+        document.addEventListener("gameoverEl", showMenu());
+        document.addEventListener("btn-start", handleFormSubmit());
     }
 
     // TODO: add a window.load listener
-
+        window.addEventListener("load", init());
     // TODO: add a window.keydown listener
 
 })();
