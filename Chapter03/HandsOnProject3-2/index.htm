@@ -6,8 +6,8 @@
       Chapter 3
       Hands-on Project 3-2
 
-      Author: 
-      Date:   
+      Author: Nathan Foglia 
+      Date:   Feb. 4, 2020
 
       Filename: index.htm
    -->
@@ -47,5 +47,17 @@
         </fieldset>
      </form>
    </article>
+   <script>
+      function insertplaceholders() {
+        if (!modernizr.input.placeholder) {
+          document.getElementById("nameinput").value = "First and last name";
+          document.getElementById("emailinput").value = "address@example.com";
+          document.getElementById("phoneinput").value = "###-###-####";
+        }
+   }
+   if (window.addEventListener) {
+     window.addEventListener ("load")
+   }
+   </script>
 </body>
 </html>
