@@ -8,40 +8,39 @@
     <link rel="stylesheet" href="Styles/Css.css">
 </head>
 <body>
-    <table border ="1" class="calculator">
+    <table class="calculator">
         <tr>
             <td colspan="4">
-            <div>
-                <div class="display" id="display">0</div>
-            </div>
+
+                <div class="display">0</div>
             </td>
         </tr>
         <tr>
-            <td colspan="3"><button id="clear" class ="clear" onclick = "clearCalc()">Clear</button></td>
-            <td><button class="op_div op div" onclick="op('/')">&divide;</button></td>
+            <td colspan="3"><button class="clear" onclick="alert('Clear')">Clear</button></td>
+            <td><button class="op div" onclick="alert('&divide;')">&divide;</button></td>
         </tr>
         <tr>
-            <td><button class="num" onclick="number(7)"> 7 </button></td>
-            <td><button class="num" onclick="number(8)"> 8 </button></td>
-            <td><button class="num" onclick="number(9)"> 9 </button></td>
-            <td><button class="op_mul op mul" onclick="op('*')">&times;</button></td>
+            <td><button class="num" onclick="alert(7)">7</button></td>
+            <td><button class="num" onclick="alert(8)">8</button></td>
+            <td><button class="num" onclick="alert(9)">9</button></td>
+            <td><button class="op mul" onclick="alert('&times;')">&times;</button></td>
         </tr>
         <tr>
-            <td><button class="num" onclick="number(4)"> 4 </button></td>
-            <td><button class="num" onclick="number(5)"> 5 </button></td>
-            <td><button class="num" onclick="number(6)"> 6 </button></td>
-            <td><button class="op_sub op sub" onclick="op('-')">&minus;</button></td>
+            <td><button class="num" onclick="alert(4)">4</button></td>
+            <td><button class="num" onclick="alert(5)">5</button></td>
+            <td><button class="num" onclick="alert(6)">6</button></td>
+            <td><button class="op sub" onclick="alert('&minus;')">&minus;</button></td>
         </tr>
         <tr>
-            <td><button class="num" onclick="number(1)"> 1 </button></td>
-            <td><button class="num" onclick="number(2)"> 2 </button></td>
-            <td><button class="num" onclick="number(3)"> 3 </button></td>
-            <td><button class="op_add op add" onclick="op('+')">&plus;</button></td>
+            <td><button class="num" onclick="alert(1)">1</button></td>
+            <td><button class="num" onclick="alert(2)">2</button></td>
+            <td><button class="num" onclick="alert(3)">3</button></td>
+            <td><button class="op add" onclick="alert('&plus;')">&plus;</button></td>
         </tr>
         <tr>
-            <td colspan="2"><button class="num" class="num" onclick="number(0)"> 0 </button></td>
-            <td><button class="point" onclick= decimal()>.</button></td>
-            <td><button class="op_eq eq" onclick="op('=')">&equals;</button></td>
+            <td colspan="2"><button class="num" onclick="alert(0)">0</button></td>
+            <td><button class="point" onclick="alert('.')">.</button></td>
+            <td><button class="eq" onclick="alert('&equals;')">&equals;</button></td>
         </tr>
     </table>
     <script src="js/calc.js"></script>
