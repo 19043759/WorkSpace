@@ -6,8 +6,8 @@
       Chapter 5
       Hands-on Project 5-5
 
-      Author: 
-      Date:   
+      Author: Nathan Foglia
+      Date:   March 10, 2020
 
       Filename: index.htm
    -->
@@ -28,7 +28,11 @@
    <article>
       <h2>United States Bill of Rights</h2>
       <h3>Table of Contents</h3>
-      <ul></ul>
+      <ul>
+         <li onload=creatTOC()>
+
+         </li>
+      </ul>
       <h3 id="1">Amendment I</h3>
       <p>Congress shall make no law respecting an establishment of religion, or prohibiting the free exercise thereof; or abridging the freedom of speech, or of the press; or the right of the people peaceably to assemble, and to petition the Government for a redress of grievances.</p>
       <h3 id="2">Amendment II</h3>
@@ -50,5 +54,15 @@
       <h3 id="10">Amendment X</h3>
       <p>The powers not delegated to the United States by the Constitution, nor prohibited by it to the States, are reserved to the States respectively, or to the people.</p>
    </article>
+   <script>
+      var list = "ul"
+      var headingText;
+      var TOCEntry = "<ahrf=#" + i + ">" + headingText + "</a>";
+      for (counter = 1; x <= 10; counter++){
+         headingText = document.getElementById("x");
+      }
+      document.createElement("li") = TOCEntry;
+
+</script>
 </body>
 </html>
