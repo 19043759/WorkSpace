@@ -51,12 +51,12 @@
       <p>The powers not delegated to the United States by the Constitution, nor prohibited by it to the States, are reserved to the States respectively, or to the people.</p>
    </article>
    <script>
-      var list = document.getElementsByTagName("ul")
-      var headingText;
-      var TOCEntry = "<ahrf=#" + counter + ">" + headingText + "</a>";
-      for (counter = 1; counter <= 10; counter++){
-         headingText = document.getElementById("x");
-         document.createElement("li") = TOCEntry;
+      var list = document.querySelector('ul')
+      var headingText, TOCEntry;
+      for (let counter = 1; counter <= 10; counter++){
+         headingText = document.getElementById(counter).innerHTML;
+         TOCEntry = document.createElement('li');
+         TOCEntry.innerHTML = '<a href=#' + counter + '>' + headingText + '</a>';
          list.appendChild(TOCEntry);
       }
    
