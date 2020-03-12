@@ -1,5 +1,5 @@
 (function() {
-    "use strict"
+   // "use strict"
 
     const BLOCK_SIZE = 50                // Number of pixels per gameboard grid block
     const INITIAL_SPEED = 5              // In grid blocks/sec
@@ -75,6 +75,8 @@
      */
     function positionElementOnGrid(el, gridX, gridY) {
         // TODO: position the element
+        //el * gridX * gridY + px();
+        //postionSnake.insertAfter(parent());
     }
 
     /**
@@ -107,10 +109,23 @@
 
     function createSnakeSegmentElement() {
         // TODO: create and return a snake segment element
+        let newDiv = document.createElement('div');
+        newDiv.classList.add('snake-segment');
+        newDiv.style.backgroundColor = "#721745";
+        newDiv.style.width = snakeX;
+        newDiv.style.height = snakeY;
+        
+        /*<div class='snake-segment' bgcolor = "#721745" width ="snakeX" height ="snakeY" >   
+        </div>*/
     }
 
     function createFoodElement() {
         // TODO: create and return a food element
+        let newDiv = document.createElement('div');
+        newDiv.classList.add('food');
+        newDiv.style.backgroundColor = "green";
+        newDiv.style.width = BLOCK_SIZE;
+        newDiv.style.height = BLOCK_SIZE;
     }
     
     function killSnake() {
@@ -119,20 +134,19 @@
 
     function clearBoard() {
         // TODO: remove all elements from the gameboard element
-        let childEl = document.getElementById("gameboard");
-        childEl.removeChild();
+
     }
 
     function hideMenu() {
         // TODO: hide the menu
         let x = document.getElementById("menu");
-        x.classList.remove("open")
+        x.classList.remove("open");
     }
 
     function showMenu() {
         // TODO: show the menu
         let x = document.getElementById("menu");
-        x.classList.add("open")
+        x.classList.add("open");
     }
 
     function hideGameover() {
@@ -145,10 +159,21 @@
 
     function initSnake() {
         // TODO: get a snake element initialized and on the board!
+        snakeX = 0;
+        snakeY = 0;
+        snakeSpeed = INITIAL_SPEED;
+        snakeDirection =INITIAL_SNAKE_DIRECTION;
+        snakeEl = createSnakeSegmentElement();
+        snakeEl += boardEl
+        positionElementOnGrid(snakeEl, snakeX, snakeY);
+
     }
 
     function addNewFood() {
         // TODO: add a new food element
+        foodEl = createFoodElement();
+        foodEl += boardEl;
+        positionElementOnGrid(foodEl)
     }
 
     function updateScoreElement() {
@@ -220,7 +245,7 @@
         startGame()
 
         // This prevents the form from actually submitting
-        event.preventDefault()
+        //event.preventDefault()
     }
 
     function handleKeyPress(event) {
@@ -231,12 +256,15 @@
         // TODO: initialize the app
         boardEl = document.getElementById("gameboard");
         gameoverEl =  document.getElementById("game-over");
-        document.addEventListener("gameoverEl", showMenu());
-        document.addEventListener("btn-start", handleFormSubmit());
+        gameoverEl.addEventListener('click', showMenu());
+        document.getElementById('btn-start').addEventListener('click', handleFormSubmit());
     }
 
+    
     // TODO: add a window.load listener
-        window.addEventListener("load", init());
+    window.addEventListener('DOMContentLoaded', init, false);
+    //document.onload(init);
+    // window.addEventListener("onload", init, false);
     // TODO: add a window.keydown listener
 
 })();
