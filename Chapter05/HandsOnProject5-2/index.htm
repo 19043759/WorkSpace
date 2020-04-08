@@ -57,9 +57,9 @@
      function processInput(){
        var propertyWidth = 300;
        var propertyHeight = 100;
-       var winLeft = ((screen.width - propertyWidth / 2));
-       var winTop = ((screen.height - propertyHeight / 2));
-       var winOptions = "width=300, hieght=100";
+       var winLeft = ((screen.width/2 - propertyWidth / 2));
+       var winTop = ((screen.height/2 - propertyHeight / 2));
+       var winOptions = "width=300, height=100";
        winOptions += ",left=" + winLeft;
        winOptions += ",top=" + winTop;
        window.open("confirm.htm", "confirm", winOptions);

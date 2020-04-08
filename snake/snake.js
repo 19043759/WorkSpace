@@ -112,8 +112,8 @@
         let newDiv = document.createElement('div');
         newDiv.classList.add('snake-segment');
         newDiv.style.backgroundColor = "#721745";
-        newDiv.style.width = snakeX;
-        newDiv.style.height = snakeY;
+        newDiv.style.width = px(1);
+        newDiv.style.height = px(1);
         
         /*<div class='snake-segment' bgcolor = "#721745" width ="snakeX" height ="snakeY" >   
         </div>*/
@@ -262,7 +262,7 @@
 
     
     // TODO: add a window.load listener
-    window.addEventListener('DOMContentLoaded', init, false);
+    window.addEventListener('load', init, false);
     //document.onload(init);
     // window.addEventListener("onload", init, false);
     // TODO: add a window.keydown listener
