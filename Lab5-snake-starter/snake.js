@@ -1,8 +1,8 @@
 (function() {
-   // "use strict"
+    "use strict"
 
     const BLOCK_SIZE = 50                // Number of pixels per gameboard grid block
-    const INITIAL_SPEED = 5              // In grid blocks/sec
+    const INITIAL_SNAKE_SPEED = 5              // In grid blocks/sec
     const INITIAL_SNAKE_DIRECTION = 'R'  // One of R, L, U, or D
 
     let gameState                        // Either 'running' or 'over'
@@ -74,20 +74,18 @@
      * @param gridY The y-coordinate on the gameboard grid at which to position the segment
      */
     function positionElementOnGrid(el, gridX, gridY) {
-        // TODO: position the element
-        //el * gridX * gridY + px();
-        //postionSnake.insertAfter(parent());
+        el.style.top = px(gridY);
+        el.style.left = px(gridX);
     }
 
     /**
      * Returns true if the two given elements are in the same location
      */
     function isAtSamePos(el1, el2) {
-        // TODO: determine if the two elements are at the same location
-    }
-
-    function isSnakeOutOfBounds() {
-        // TODO: return true if the snake is out of bounds; otherwise return false
+        if ( el1.style.top === el2.style.top && el1.style.left === el2.style.left ) {
+            return true
+        }
+        return false
     }
 
     /**
@@ -104,88 +102,108 @@
      * value using the msPerTick function above.
      */
     function tick() {
-        // TODO: use a timer to update the game and re-call tick
+        window.setTimeout(() => { 
+            if ( gameState === 'running' ) { 
+                updateGame()
+                tick() 
+            } 
+        }, msPerTick(snakeSpeed))
+    }
+
+    function isSnakeOutOfBounds() {
+        return snakeX < 0 || snakeX >= boardW || snakeY < 0 || snakeY >= boardH
     }
 
     function createSnakeSegmentElement() {
-        // TODO: create and return a snake segment element
-        let newDiv = document.createElement('div');
-        newDiv.classList.add('snake-segment');
-        newDiv.style.backgroundColor = "#721745";
-        newDiv.style.width = snakeX;
-        newDiv.style.height = snakeY;
-        
-        /*<div class='snake-segment' bgcolor = "#721745" width ="snakeX" height ="snakeY" >   
-        </div>*/
+        let segmentEl = document.createElement('div')
+        segmentEl.className = 'snake-segment'
+        segmentEl.style.backgroundColor = snakeColor
+        segmentEl.style.width = segmentEl.style.height = px(1)
+
+        return segmentEl
     }
 
     function createFoodElement() {
-        // TODO: create and return a food element
-        let newDiv = document.createElement('div');
-        newDiv.classList.add('food');
-        newDiv.style.backgroundColor = "green";
-        newDiv.style.width = BLOCK_SIZE;
-        newDiv.style.height = BLOCK_SIZE;
+        let f = document.createElement('div')
+        f.className = 'food'
+        f.style.width = f.style.height = px(1)
+        f.style.borderRadius = '50%'
+        f.style.backgroundColor = 'green'
+
+        return f
     }
     
     function killSnake() {
-        // TODO: set the snake's background color to transparent
+        snakeEl.style.backgroundColor = 'transparent'
     }
 
     function clearBoard() {
-        // TODO: remove all elements from the gameboard element
+
+        while ( boardEl.lastChild ) {
+            boardEl.removeChild(boardEl.lastChild)
+        }
 
     }
 
     function hideMenu() {
-        // TODO: hide the menu
-        let x = document.getElementById("menu");
-        x.classList.remove("open");
+        document.getElementById('menu').classList.remove('open');
     }
 
     function showMenu() {
-        // TODO: show the menu
-        let x = document.getElementById("menu");
-        x.classList.add("open");
+        document.getElementById('menu').classList.add('open');
     }
 
     function hideGameover() {
-        // TODO: hide the gameover element
+        gameoverEl.classList.remove('show')
     }
 
     function showGameover() {
-        // TODO: show the gameover element
+        gameoverEl.classList.add('show')
     }
 
     function initSnake() {
-        // TODO: get a snake element initialized and on the board!
-        snakeX = 0;
-        snakeY = 0;
-        snakeSpeed = INITIAL_SPEED;
-        snakeDirection =INITIAL_SNAKE_DIRECTION;
-        snakeEl = createSnakeSegmentElement();
-        snakeEl += boardEl
-        positionElementOnGrid(snakeEl, snakeX, snakeY);
+        snakeX = 0
+        snakeY = 0
+        snakeDirection = INITIAL_SNAKE_DIRECTION
+        snakeSpeed = INITIAL_SNAKE_SPEED
+        snakeEl = createSnakeSegmentElement(snakeX, snakeY, snakeDirection) 
+        boardEl.appendChild(snakeEl)
 
+        positionElementOnGrid(snakeEl, snakeX, snakeY)
     }
 
     function addNewFood() {
-        // TODO: add a new food element
-        foodEl = createFoodElement();
-        foodEl += boardEl;
-        positionElementOnGrid(foodEl)
+        foodEl = createFoodElement()
+        boardEl.appendChild(foodEl)
+
+        positionElementOnGrid(foodEl, boardW-1, boardH-1)
     }
 
     function updateScoreElement() {
-        // TODO: update the score element to show the current score
+        document.getElementById('score').innerText = score;
     }
 
     function updateSpeedElement() {
-        // TODO: update the speed element to show the snake's speed
+        document.getElementById('speed').innerText = snakeSpeed + ' blocks/sec'
     }
 
     function updateSnakePosition() {
-        // TODO: update the snake's position depending on the snake's direction
+
+        switch( snakeDirection ) {
+            case 'U':
+                snakeY--
+                break;
+            case 'D':
+                snakeY++
+                break;
+            case 'L':
+                snakeX--
+                break;
+            case 'R':
+                snakeX++
+                break;
+        }
+
     }
 
     function isGameOver() {
@@ -201,7 +219,7 @@
         updateSnakePosition()
         
         if ( isGameOver() ) {
-            showGameOver()
+            showGameover()
             killSnake()
             gameState = 'over'
         } else {
@@ -212,7 +230,7 @@
                 snakeSpeed *= 1.05
             } 
             updateScoreElement()
-            updateSpeedElement()
+            updateSpeedElement()        
         }
     }
 
@@ -221,13 +239,12 @@
         clearBoard()
         resizeBoard()
 
-        // Needs to happen after the board has been cleared
+        // Needs to happen after the board has been created and sized
         initSnake()
         addNewFood()
         
         score = 0
-
-        // TODO: hide the GAME OVER element 
+        hideGameover()
 
     }
 
@@ -245,26 +262,44 @@
         startGame()
 
         // This prevents the form from actually submitting
-        //event.preventDefault()
+        event.preventDefault()
     }
 
     function handleKeyPress(event) {
-        // TODO: set snakeDirection according to the key the user pressed
+
+        const key = event.key
+
+        if ( gameState === 'running' ) {
+            if ( key === 'ArrowDown' || key === 'ArrowUp' || key === 'ArrowLeft' || key === 'ArrowRight' ) {
+
+                switch (key) {
+                    case 'ArrowDown':
+                        snakeDirection = 'D'
+                        break
+                    case 'ArrowUp':
+                        snakeDirection = 'U'
+                        break
+                    case 'ArrowLeft':
+                        snakeDirection = 'L'
+                        break
+                    case 'ArrowRight':
+                        snakeDirection = 'R'
+                        break
+                }
+            }
+        }
     }
 
     function init() {
-        // TODO: initialize the app
-        boardEl = document.getElementById("gameboard");
-        gameoverEl =  document.getElementById("game-over");
-        gameoverEl.addEventListener('click', showMenu());
-        document.getElementById('btn-start').addEventListener('click', handleFormSubmit());
+        boardEl = document.getElementById('gameboard');
+        gameoverEl = document.getElementById('game-over');
+
+        document.forms[0].addEventListener('submit', handleFormSubmit);
+        gameoverEl.addEventListener('click', showMenu);
     }
 
-    
-    // TODO: add a window.load listener
-    window.addEventListener('DOMContentLoaded', init, false);
-    //document.onload(init);
-    // window.addEventListener("onload", init, false);
-    // TODO: add a window.keydown listener
+    window.addEventListener('load', init);
+
+    window.addEventListener('keydown', handleKeyPress)
 
 })();
