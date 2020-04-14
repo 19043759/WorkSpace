@@ -131,11 +131,11 @@ p {
 }
 
 #dateSelected {
-   width: 180px;
+   width: 140px;
 }
 
 #day {
-   width: 120px;
+   width: 100px;
    font-size: 1.1em;
    height: 1.6em;
    background: white;
